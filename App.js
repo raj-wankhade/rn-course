@@ -1,37 +1,42 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, TextInput } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.textStyle}>Hello World!!!!</Text>
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder="Enter Your Goal" />
+        <Button title="Add Goal" />
       </View>
-      <Text style={styles.textStyle}>Another Text!!!!</Text>
-      <Text style={[styles.bigBlue, styles.red]}>bigBlue, then red</Text>
-      <Button title="Submit" />
+      <View style={styles.goalsContainer}>
+        <Text>List of goals ...</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
+    paddingTop: 50,
+    paddingHorizontal: 16,
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  textStyle: {
-    margin: 16,
-    borderColor: "blue",
-    borderWidth: 2,
-    padding: 16,
+  inputContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center", // to center instead opf stretch by default
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
   },
-  bigBlue: {
-    color: "blue",
-    fontWeight: "bold",
-    fontSize: 30,
+  textInput: {
+    width: "70%",
+    borderWidth: 1,
+    borderColor: "#cccccc",
+    marginRight: 8,
+    padding: 8,
   },
-  red: {
-    color: "red",
+  goalsContainer: {
+    flex: 5,
   },
 });
