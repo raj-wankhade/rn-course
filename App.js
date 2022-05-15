@@ -13,7 +13,7 @@ export default function App() {
   function addGoalHandler() {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
-      enteredGoal,
+      { text: enteredGoal, id: Math.random().toString() },
     ]);
   }
 
@@ -31,8 +31,9 @@ export default function App() {
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-            return <GoalItem itemData={itemData} key={itemData.index} />;
+            return <GoalItem text={itemData.item.text} />;
           }}
+          keyExtractor={(item, index) => item.id}
         />
       </View>
     </View>
