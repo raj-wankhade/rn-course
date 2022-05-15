@@ -5,19 +5,22 @@ import {
   Text,
   View,
   TextInput,
-  ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
-  const [courseGoal, setCourseGoal] = useState([]);
+  const [courseGoals, setCourseGoals] = useState([]);
 
   function goalInputHandler(enteredText) {
     setEnteredGoal(enteredText);
   }
 
   function addGoalHandler() {
-    setCourseGoal((currentCourseGoal) => [...currentCourseGoal, enteredGoal]);
+    setCourseGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+      enteredGoal,
+    ]);
   }
 
   return (
@@ -31,13 +34,17 @@ export default function App() {
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView>
-          {courseGoal.map((goal, index) => (
-            <View key={index} style={styles.goalItem}>
-              <Text style={styles.goalItemText}>{goal}</Text>
-            </View>
-          ))}
-        </ScrollView>
+        <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => {
+            console.log("item data is", itemData);
+            return (
+              <View style={styles.goalItem} key={itemData.index}>
+                <Text style={styles.goalItemText}>{itemData.item}</Text>
+              </View>
+            );
+          }}
+        />
       </View>
     </View>
   );
