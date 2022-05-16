@@ -13,7 +13,6 @@ export default function App() {
   }
 
   function endAddGoalModal() {
-    console.log("inside end all goal modal");
     setShowModal(false);
   }
 
@@ -37,7 +36,7 @@ export default function App() {
       <View style={styles.appContainer}>
         <Button
           title="Add New Goal"
-          color="#366fc9"
+          color="#b180f0"
           onPress={startAddGoalModal}
         />
         <GoalInput
