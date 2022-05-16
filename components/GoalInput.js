@@ -13,7 +13,7 @@ const GoalInput = ({ onAddGoal, visible }) => {
   }
 
   return (
-    <Modal visible={visible}>
+    <Modal visible={visible} animationType="slide">
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
@@ -21,7 +21,14 @@ const GoalInput = ({ onAddGoal, visible }) => {
           placeholder="Enter Your Goal ..."
           value={enteredGoal}
         />
-        <Button title="Add Goal" onPress={addGoalHandler} />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -30,19 +37,26 @@ const GoalInput = ({ onAddGoal, visible }) => {
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center", // to center instead opf stretch by default
     marginBottom: 24,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
+    padding: 16,
   },
   textInput: {
-    width: "70%",
+    width: "100%",
     borderWidth: 1,
     borderColor: "#cccccc",
-    marginRight: 8,
     padding: 8,
+    marginBottom: 8,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+  },
+  button: {
+    marginHorizontal: 8,
+    width: "30%",
   },
 });
 
